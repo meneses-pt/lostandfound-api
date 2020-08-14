@@ -1,4 +1,4 @@
-from flask_jwt_extended import get_jwt_identity, current_user
+from flask_jwt_extended import current_user
 from sqlalchemy.ext.declarative import declared_attr
 
 from app import db
@@ -7,6 +7,7 @@ from app import db
 class BaseModel(db.Model):
     __abstract__ = True
 
+    active = db.Column(db.Boolean, nullable=False, default=True)
     created_on = db.Column(db.DateTime,
                            default=db.func.now())
     updated_on = db.Column(db.DateTime,
