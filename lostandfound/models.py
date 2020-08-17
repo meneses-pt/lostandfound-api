@@ -17,7 +17,7 @@ class LookingForReason(Enum):
 
 class Category(BaseModel):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    name = db.Column(db.String(100), nullable=False, unique=True)
     slug = db.Column(db.String(56), nullable=False, unique=True)
     parent_category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=True)
 
